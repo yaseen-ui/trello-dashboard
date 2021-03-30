@@ -1,0 +1,17 @@
+.boards-view {
+  margin-top: 70px; // same as the header height
+}
+
+.board-body {
+  padding: 1rem 0.5rem;
+  height: calc(100vh - 262px);
+  overflow-y: auto;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+.card-footer {
+  text-align: center;
+}

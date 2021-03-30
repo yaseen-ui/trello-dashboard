@@ -1,0 +1,66 @@
+<div class="boards-view">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10">
+        <input type="text" class="form-control form-group" *ngIf="domEle.showAddTextBox" [(ngModel)]="boardName"
+          placeholder="enter board name" id="board-input">
+      </div>
+      <div class="col-md-2 form-group">
+        <button class="btn btn-sm btn-primary float-right" (click)="addList()">Add List</button>
+      </div>
+      <ng-container *ngFor="let board of boards; let i = index">
+        <div class="col-md-3 form-group">
+          <div class="card">
+            <div class="card-header">
+              {{board.title}}
+              <button class="btn-danger float-right" (click)="deleteList(boards,i)">x</button>
+            </div>
+            <div class="card-body board-body">
+              <div class="card" *ngFor="let card of board.list; let cardIndex = index">
+                <div class="card-header">
+                  {{card.title}}
+                  <button class="btn-danger float-right" (click)="deleteList(board.list,cardIndex)">x</button>
+                </div>
+                <div class="card-body">
+                  {{card.desc}}
+                </div>
+              </div>
+            </div>
+            <div class="card-footer board-footer">
+              <button class="btn btn-sm btn-primary" (click)="openPopup(i)" data-toggle="modal"
+                data-target="#addCard">+</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+
+<div class="modal fade" id="addCard">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add new card</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <input class="form-control form-group" [(ngModel)]="newCard.title" placeholder="Enter Title">
+        <input class="form-control form-group" [(ngModel)]="newCard.desc" placeholder="Enter Desc">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success btn-sm" (click)="addCard()" data-dismiss="modal">Add</button>
+      </div>
+
+    </div>
+  </div>
+</div>
