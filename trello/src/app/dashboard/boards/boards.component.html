@@ -9,14 +9,15 @@
         <button class="btn btn-sm btn-primary float-right" (click)="addList()">Add List</button>
       </div>
       <ng-container *ngFor="let board of boards; let i = index">
-        <div class="col-md-3 form-group">
+        <div class="col-md-3 form-group" droppable (onDrop)="onItemDrop($event, board)">
           <div class="card">
             <div class="card-header">
               {{board.title}}
               <button class="btn-danger float-right" (click)="deleteList(boards,i)">x</button>
             </div>
             <div class="card-body board-body">
-              <div class="card" *ngFor="let card of board.list; let cardIndex = index">
+              <div class="card" draggable *ngFor="let card of board.list; let cardIndex = index"
+                [dragData]="{board:board, index:cardIndex, card: card}">
                 <div class="card-header">
                   {{card.title}}
                   <button class="btn-danger float-right" (click)="deleteList(board.list,cardIndex)">x</button>

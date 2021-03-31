@@ -6,6 +6,8 @@ import { DashboardComponent } from './dashboard.component';
 import { NavHeaderComponent } from './nav-header/nav-header.component';
 import { BoardsComponent } from './boards/boards.component';
 import { FormsModule } from '@angular/forms';
+import { NgDragDropModule } from 'ng-drag-drop';
+
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    FormsModule
+    FormsModule,
+    NgDragDropModule.forRoot()
   ]
 })
 export class DashboardModule { }

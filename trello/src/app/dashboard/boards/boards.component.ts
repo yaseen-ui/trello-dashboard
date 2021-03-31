@@ -87,5 +87,9 @@ export class BoardsComponent implements OnInit {
       console.log(error);
     }
   }
+  onItemDrop(event: any, board: any) {
+    event.dragData.board.list.splice(event.dragData.index, 1);
+    board.list.push(event.dragData.card);
+  }
 
 }
